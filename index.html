@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>We The People — Understanding the Amendments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" />
+
+  <style>
+    :root {
+      --ink: #0d0f1a;
+      --parchment: #f5f0e8;
+      --cream: #faf7f2;
+      --gold: #c9922a;
+      --gold-light: #e8b84b;
+      --navy: #0e1f3d;
+      --navy-mid: #1a3260;
+      --red: #8b1a1a;
+      --sage: #3d5a47;
+      --rule: #c9922a44;
+      --border: #0d0f1a22;
+      --radius: 2px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      background: var(--navy);
+      color: var(--parchment);
+      text-align: center;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(201,146,42,0.04) 2px,
+        rgba(201,146,42,0.04) 4px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-top-rule {
+      height: 6px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+
+    .masthead-inner {
+      padding: 3.5rem 2rem 3rem;
+      position: relative;
+    }
+
+    .vol-line {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      opacity: 0.85;
+    }
+
+    .masthead h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--parchment);
+      text-transform: uppercase;
+    }
+
+    .masthead h1 em {
+      display: block;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.52em;
+      letter-spacing: 0.04em;
+      color: var(--gold-light);
+      text-transform: none;
+      margin-bottom: 0.1em;
+    }
+
+    .masthead-tagline {
+      margin-top: 1.4rem;
+      font-family: 'Source Serif 4', serif;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-style: italic;
+      color: rgba(245,240,232,0.7);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gold-rule {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+    }
+
+    .masthead-bottom-rule {
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
+    }
+
+    /* ── NAV ── */
+    .era-nav {
+      background: var(--navy-mid);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .era-nav ul {
+      display: flex;
+      list-style: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 1rem;
+      gap: 0;
+    }
+
+    .era-nav ul::-webkit-scrollbar { display: none; }
+
+    .era-nav a {
+      display: block;
+      padding: 0.8rem 1.2rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.65);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.2s, border-bottom 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+
+    .era-nav a:hover {
+      color: var(--gold-light);
+      border-bottom-color: var(--gold-light);
+    }
+
+    /* ── INTRO ── */
+    .intro-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .kicker {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .intro-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.4rem;
+    }
+
+    .intro-section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #2a2a2a;
+      max-width: 680px;
+      margin: 0 auto 1rem;
+    }
+
+    .pull-quote {
+      background: var(--navy);
+      color: var(--parchment);
+      border-left: 5px solid var(--gold);
+      padding: 1.5rem 2rem;
+      margin: 3rem auto;
+      max-width: 720px;
+      text-align: left;
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    .pull-quote::before {
+      content: '\201C';
+      font-size: 5rem;
+      line-height: 0;
+      position: absolute;
+      top: 2rem;
+      left: 1.2rem;
+      color: var(--gold);
+      opacity: 0.4;
+      font-style: normal;
+    }
+
+    /* ── ERA SECTION ── */
+    .era-section {
+      padding: 3rem 1.5rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .era-header {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .era-header.reverse { grid-template-columns: 1.3fr 1fr; }
+    .era-header.reverse .era-img-wrap { order: -1; }
+
+    .era-meta { }
+
+    .era-badge {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--gold-light);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .era-meta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+
+    .era-years {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .era-meta p {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: #333;
+    }
+
+    .era-img-wrap {
+      position: relative;
+      border: 3px solid var(--navy);
+    }
+
+    .era-img-wrap img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .era-img-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(14,31,61,0.85);
+      color: var(--gold-light);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 0.7rem;
+      text-align: right;
+    }
+
+    /* ── AMENDMENT CARDS ── */
+    .amendments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .amendment-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      padding: 1.4rem 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+
+    .amendment-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(14,31,61,0.12);
+    }
+
+    .amendment-card.spotlight {
+      border-top-color: var(--gold);
+      background: var(--parchment);
+    }
+
+    .amendment-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--navy);
+      opacity: 0.15;
+      float: left;
+      margin-right: 0.6rem;
+      margin-top: -0.2rem;
+      line-height: 1;
+    }
+
+    .amendment-card.spotlight .amendment-number { color: var(--gold); opacity: 0.5; }
+
+    .amendment-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+      clear: none;
+    }
+
+    .amendment-summary {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #444;
+      clear: both;
+    }
+
+    .amendment-tag {
+      display: inline-block;
+      margin-top: 0.7rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid;
+    }
+
+    .tag-rights { color: var(--sage); border-color: var(--sage); }
+    .tag-equality { color: var(--red); border-color: var(--red); }
+    .tag-voting { color: var(--navy); border-color: var(--navy); }
+    .tag-process { color: #6b4226; border-color: #6b4226; }
+    .tag-governance { color: #4a3d6e; border-color: #4a3d6e; }
+
+    /* ── BEFORE / AFTER ── */
+    .before-after-section {
+      background: var(--navy);
+      color: var(--parchment);
+      padding: 4rem 1.5rem;
+      margin: 4rem 0;
+    }
+
+    .before-after-section .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .before-after-section .section-sub {
+      text-align: center;
+      font-style: italic;
+      color: rgba(245,240,232,0.65);
+      margin-bottom: 3rem;
+      font-size: 1rem;
+    }
+
+    .ba-tabs {
+      display: flex;
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      border: 1px solid rgba(201,146,42,0.4);
+    }
+
+    .ba-tab {
+      flex: 1;
+      padding: 0.9rem;
+      text-align: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: rgba(245,240,232,0.5);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .ba-tab.active {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .ba-panels {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ba-panel { display: none; }
+    .ba-panel.active { display: block; }
+
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .ba-side {
+      padding: 2rem;
+    }
+
+    .ba-side.before-side {
+      background: rgba(255,255,255,0.04);
+      border-right: 2px solid var(--gold);
+    }
+
+    .ba-side.after-side {
+      background: rgba(201,146,42,0.07);
+    }
+
+    .ba-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ba-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold-light);
+    }
+
+    .ba-side h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .ba-side p {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: rgba(245,240,232,0.8);
+    }
+
+    .ba-side .official-text {
+      background: rgba(0,0,0,0.25);
+      border-left: 3px solid var(--gold);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-family: 'Source Serif 4', serif;
+      font-style: italic;
+      font-size: 0.87rem;
+      color: rgba(245,240,232,0.9);
+    }
+
+    .ba-side .today-box {
+      background: rgba(201,146,42,0.12);
+      border: 1px solid rgba(201,146,42,0.3);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.87rem;
+      color: rgba(245,240,232,0.9);
+    }
+
+    .ba-side .proposed-box {
+      background: rgba(61,90,71,0.25);
+      border: 1px solid rgba(61,90,71,0.6);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.87rem;
+      color: rgba(245,240,232,0.9);
+    }
+
+    .ba-side ul {
+      padding-left: 1.2rem;
+      font-size: 0.89rem;
+      color: rgba(245,240,232,0.8);
+      line-height: 1.8;
+    }
+
+    /* ── ERA DIVIDER ── */
+    .era-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin: 3rem 0 2rem;
+    }
+
+    .era-divider::before,
+    .era-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .era-divider span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* ── SPOTLIGHT DEEP DIVES ── */
+    .spotlight-article {
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--gold);
+      padding: 2.5rem;
+      margin: 2rem 0;
+      max-width: 860px;
+    }
+
+    .spotlight-article h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .spotlight-article .byline {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .spotlight-article p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #2a2a2a;
+      margin-bottom: 0.9rem;
+    }
+
+    .spotlight-article .loophole-box {
+      background: #fff0f0;
+      border: 1px solid #cc333344;
+      border-left: 4px solid var(--red);
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .spotlight-article .loophole-box strong {
+      color: var(--red);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── EQUAL RIGHTS SECTION ── */
+    .equal-rights-section {
+      background: linear-gradient(135deg, var(--sage) 0%, #2a4a35 100%);
+      color: var(--parchment);
+      padding: 4.5rem 1.5rem;
+      margin: 4rem 0;
+    }
+
+    .equal-rights-section .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .equal-rights-section .section-sub {
+      text-align: center;
+      color: rgba(245,240,232,0.7);
+      font-style: italic;
+      margin-bottom: 3rem;
+    }
+
+    .proposed-amendments {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .proposed-card {
+      background: rgba(245,240,232,0.07);
+      border: 1px solid rgba(245,240,232,0.15);
+      border-top: 3px solid var(--gold-light);
+      padding: 1.6rem;
+      transition: background 0.2s;
+    }
+
+    .proposed-card:hover {
+      background: rgba(245,240,232,0.12);
+    }
+
+    .proposed-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .proposed-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .proposed-card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: rgba(245,240,232,0.8);
+    }
+
+    .proposed-card .reason {
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: rgba(245,240,232,0.55);
+      font-style: italic;
+      border-top: 1px solid rgba(245,240,232,0.12);
+      padding-top: 0.6rem;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(245,240,232,0.5);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .site-footer h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--parchment);
+      margin-bottom: 0.5rem;
+    }
+
+    .site-footer p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 1rem;
+    }
+
+    .footer-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+
+    .footer-mono {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .era-header,
+      .era-header.reverse {
+        grid-template-columns: 1fr;
+      }
+      .era-header.reverse .era-img-wrap { order: 0; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .ba-side.before-side { border-right: none; border-bottom: 2px solid var(--gold); }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .masthead-inner > * {
+      animation: fadeUp 0.7s ease both;
+    }
+    .masthead-inner > *:nth-child(1) { animation-delay: 0.1s; }
+    .masthead-inner > *:nth-child(2) { animation-delay: 0.25s; }
+    .masthead-inner > *:nth-child(3) { animation-delay: 0.4s; }
+    .masthead-inner > *:nth-child(4) { animation-delay: 0.55s; }
+    .masthead-inner > *:nth-child(5) { animation-delay: 0.7s; }
+
+    /* Scroll fade-in via intersection */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── MISC ── */
+    .container { max-width: 1100px; margin: 0 auto; }
+    .text-gold { color: var(--gold); }
+    .text-red { color: var(--red); }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rule) 20%, var(--rule) 80%, transparent);
+      margin: 0;
+    }
+
+    .ornament {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.5em;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-top-rule"></div>
+    <div class="masthead-inner">
+      <p class="vol-line">Civic Education Series &nbsp;·&nbsp; 27 Amendments &nbsp;·&nbsp; One Living Document</p>
+      <h1><em>We The People</em>Understanding<br>The Amendments</h1>
+      <div class="gold-rule"></div>
+      <p class="masthead-tagline">What the Constitution actually says, what it means today, and what equal justice demands it say next.</p>
+    </div>
+    <div class="masthead-bottom-rule"></div>
+  </header>
+
+  <!-- STICKY NAV -->
+  <nav class="era-nav" aria-label="Era navigation">
+    <ul>
+      <li><a href="#bill-of-rights">Bill of Rights · 1791</a></li>
+      <li><a href="#early">Early Amendments · 1795–1804</a></li>
+      <li><a href="#reconstruction">Reconstruction · 1865–1870</a></li>
+      <li><a href="#progressive">Progressive Era · 1913–1920</a></li>
+      <li><a href="#mid20th">Mid-Century · 1933–1971</a></li>
+      <li><a href="#recent">Most Recent · 1992</a></li>
+      <li><a href="#before-after">Before &amp; After</a></li>
+      <li><a href="#equal-rights">What Should Come Next</a></li>
+    </ul>
+  </nav>
+
+  <!-- INTRO -->
+  <section class="intro-section fade-in">
+    <p class="kicker">Why This Matters to You Right Now</p>
+    <h2>People invoke the Constitution every day — and most don't know what it actually says.</h2>
+    <p>
+      "You're violating my Second Amendment!" "The Fourteenth Amendment protects me!" These phrases ring out across protest lines, courtrooms, and dinner tables. But behind the slogans are 27 carefully ratified amendments — each one born out of real struggle, compromise, and the belief that the law could be made more just.
+    </p>
+    <p>
+      This guide is not a lecture. It's a walk through history, a mirror to today, and an honest look at what true equal rights would require from our founding document.
+    </p>
+  </section>
+
+  <div class="pull-quote fade-in">
+    The Constitution is not a static relic behind museum glass. It is a living framework — meant to be amended, debated, and measured against the fullness of human dignity.
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ════════════════════════════════════════
+       ERA 1 — BILL OF RIGHTS
+  ════════════════════════════════════════ -->
+  <section class="era-section fade-in" id="bill-of-rights">
+    <div class="era-header">
+      <div class="era-meta">
+        <span class="era-badge">Era One</span>
+        <h2>The Bill of Rights</h2>
+        <p class="era-years">// RATIFIED 1791</p>
+        <p>
+          The first ten amendments were not part of the original Constitution — they were demanded. Anti-Federalists refused to ratify the document without explicit protections for individual citizens. These ten amendments define the core liberties Americans hold most dear: speech, religion, privacy, fair trials, and the limits of government power.
+        </p>
+      </div>
+      <div class="era-img-wrap">
+        <img src="https://cwtqstdxiythhnedpqtp.supabase.co/storage/v1/object/public/amendments_to_the_constitution/bill_of_rights_1791.png" alt="The Bill of Rights, 1791" loading="lazy" />
+        <div class="era-img-caption">BILL OF RIGHTS — RATIFIED DECEMBER 15, 1791</div>
+      </div>
+    </div>
+
+    <div class="amendments-grid">
+      <div class="amendment-card spotlight">
+        <div class="amendment-number">1</div>
+        <div class="amendment-title">Freedom of Religion, Speech, Press, Assembly &amp; Petition</div>
+        <div class="amendment-summary">The government cannot silence you, establish a religion, or stop you from assembling peaceably. This is the most litigated amendment in American history — from social media bans to protest rights to school prayer.</div>
+        <span class="amendment-tag tag-rights">Core Rights</span>
+      </div>
+
+      <div class="amendment-card spotlight">
+        <div class="amendment-number">2</div>
+        <div class="amendment-title">The Right to Bear Arms</div>
+        <div class="amendment-summary">
+          Written during an era of citizen militias and colonial memory of standing armies, this amendment protects firearm ownership. Today it sits at the center of America's most divisive debate: individual gun rights vs. community safety. The full text reads: <em>"A well regulated Militia, being necessary to the security of a free State, the right of the people to keep and bear Arms, shall not be infringed."</em> Notice the first four words most people skip.
+        </div>
+        <span class="amendment-tag tag-rights">Frequently Cited</span>
+      </div>
+
+      <div class="amendment-card">
+        <div class="amendment-number">3</div>
+        <div class="amendment-title">No Quartering of Soldiers</div>
+        <div class="amendment-summary">Soldiers cannot be housed in your home without your consent. Rarely invoked today, but foundational to the idea that your home is your sanctuary from state power.</div>
+        <span class="amendment-tag tag-rights">Privacy</span>
+      </div>
+
+      <div class="amendment-card spotlight">
+        <div class="amendment-number">4</div>
+        <div class="amendment-title">Protection from Unreasonable Searches &amp; Seizures</div>
+        <div class="amendment-summary">Police need a warrant backed by probable cause to search your person, home, or belongings. In the digital age, this extends to your phone, emails, and data — courts are still catching up.</div>
+        <span class="amendment-tag tag-rights">Privacy</span>
+      </div>
+
+      <div class="amendment-card spotlight">
+        <div class="amendment-number">5</div>
+        <div class="amendment-title">Due Process, Double Jeopardy &amp; Self-Incrimination</div>
+        <div class="amendment-summary">You cannot be tried twice for the same crime. The government cannot seize your property without fair compensation. And you have the right to remain silent — the phrase "pleading the Fifth" comes from this amendment.</div>
+        <span class="amendment-tag tag-process">Due Process</span>
+      </div>
+
+      <div class="amendment-card">
+        <div class="amendment-number">6</div>
+        <div class="amendment-title">Right to a Speedy &amp; Public Trial</div>
+        <div class="amendment-summary">In criminal cases, you have the right to be tried quickly, publicly, by an impartial jury, to know what you're charged with, and to have a lawyer. Mass incarceration and overloaded public defenders put this right under daily pressure.</div>
+        <span class="amendment-tag tag-process">Due Process</span>
+      </div>
+
+      <div class="amendment-card">
+        <div class="amendment-number">7</div>
+        <div class="amendment-title">Civil Jury Trials</div>
+        <div class="amendment-summary">In civil lawsuits over $20, you can request a jury. This preserves the people's role in resolving disputes — not just leaving it to judges.</div>
+        <span class="amendment-tag tag-process">Due Process</span>
+      </div>
+
+      <div class="amendment-card">
+        <div class="amendment-number">8</div>
+        <div class="amendment-title">No Cruel or Unusual Punishment</div>
+        <div class="amendment-summary">Excessive bail and disproportionate sentences are prohibited. The death penalty, solitary confinement, and prison conditions are continuously challenged under this amendment.</div>
+        <span class="amendment-tag tag-rights">Human Dignity</span>
+      </div>
+
+      <div class="amendment-card">
+        <div class="amendment-number">9</div>
+        <div class="amendment-title">Rights Retained by the People</div>
+        <div class="amendment-summary">Listing rights doesn't mean those are the only rights. The Constitution cannot be used to deny unenumerated rights. This is the basis for privacy rights not explicitly named anywhere in the text.</div>
+        <span class="amendment-tag tag-rights">Foundational</span>
+      </div>
+
+      <div class="amendment-card">
+        <div class="amendment-number">10</div>
+        <div class="amendment-title">Powers Reserved to States &amp; the People</div>
+        <div class="amendment-summary">Anything not given to the federal government is left to states or the people. This is the fulcrum of the states' rights debate in everything from abortion to marijuana legalization.</div>
+        <span class="amendment-tag tag-governance">Federalism</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ════════════════════════════════════════
+       ERA 2 — EARLY AMENDMENTS
+  ════════════════════════════════════════ -->
+  <section class="era-section fade-in" id="early">
+    <div class="era-header reverse">
+      <div class="era-meta">
+        <span class="era-badge">Era Two</span>
+        <h2>Early Amendments</h2>
+        <p class="era-years">// 1795–1804</p>
+        <p>
+          As the young republic tested itself, two structural adjustments were needed — one protecting states from federal lawsuits, another fixing a flaw in the Electoral College that nearly caused a constitutional crisis.
+        </p>
+      </div>
+      <div class="era-img-wrap">
+        <img src="https://cwtqstdxiythhnedpqtp.supabase.co/storage/v1/object/public/amendments_to_the_constitution/early_amenments_1795-1804.png" alt="Early Amendments 1795–1804" loading="lazy" />
+        <div class="era-img-caption">EARLY AMENDMENTS — 1795–1804</div>
+      </div>
+    </div>
+
+    <div class="amendments-grid">
+      <div class="amendment-card">
+        <div class="amendment-number">11</div>
+        <div class="amendment-title">State Immunity from Federal Lawsuits</div>
+        <div class="amendment-summary">Individuals cannot sue a state they don't live in through federal courts. Passed after a surprising Supreme Court ruling, this limits how citizens can hold states accountable in federal court.</div>
+        <span class="amendment-tag tag-governance">Federalism</span>
+      </div>
+
+      <div class="amendment-card">
+        <div class="amendment-number">12</div>
+        <div class="amendment-title">Electoral College Reform</div>
+        <div class="amendment-summary">Fixed a design flaw that caused the President and Vice President to run separately. Now electors cast one ballot for both. This followed the chaotic Election of 1800 that ended in a congressional tie.</div>
+        <span class="amendment-tag tag-governance">Elections</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ════════════════════════════════════════
+       ERA 3 — RECONSTRUCTION
+  ════════════════════════════════════════ -->
+  <section class="era-section fade-in" id="reconstruction">
+    <div class="era-header">
+      <div class="era-meta">
+        <span class="era-badge">Era Three — The Most Consequential</span>
+        <h2>Reconstruction Amendments</h2>
+        <p class="era-years">// 1865–1870</p>
+        <p>
+          Born from the bloodiest war in American history, these three amendments attempted to rebuild the nation on a more just foundation. They abolished slavery, defined citizenship, guaranteed equal protection, and extended voting rights — on paper. In practice, they were systematically undermined for the next century through Black Codes, Jim Crow, and violent disenfranchisement.
+        </p>
+      </div>
+      <div class="era-img-wrap">
+        <img src="https://cwtqstdxiythhnedpqtp.supabase.co/storage/v1/object/public/amendments_to_the_constitution/reconstruction_1865-1870.png" alt="Reconstruction Amendments 1865–1870" loading="lazy" />
+        <div class="era-img-caption">RECONSTRUCTION AMENDMENTS — 1865–1870</div>
+      </div>
+    </div>
+
+    <div class="amendments-grid">
+      <div class="amendment-card spotlight">
+        <div class="amendment-number">13</div>
+        <div class="amendment-title">Abolition of Slavery</div>
+        <div class="amendment-summary">Formally ended slavery — except as punishment for a crime. That exception became the legal foundation for convict leasing: Black Americans were arrested on minor charges and effectively returned to forced unpaid labor. This loophole remains active in U.S. prisons today.</div>
+        <span class="amendment-tag tag-equality">Equality</span>
+      </div>
+      <div class="amendment-card spotlight">
+        <div class="amendment-number">14</div>
+        <div class="amendment-title">Citizenship, Equal Protection &amp; Due Process</div>
+        <div class="amendment-summary">Overturned Dred Scott and established that all persons born in the U.S. are citizens. The Equal Protection Clause has been used to strike down school segregation, ban discriminatory laws, and legalize same-sex marriage. Section 3 bars insurrectionists from holding office.</div>
+        <span class="amendment-tag tag-equality">Most Litigated</span>
+      </div>
+      <div class="amendment-card spotlight">
+        <div class="amendment-number">15</div>
+        <div class="amendment-title">Voting Rights — Race &amp; Color</div>
+        <div class="amendment-summary">Prohibited denying the vote based on race. But it didn't guarantee a universal right to vote — it just banned one specific type of discrimination. States immediately found workarounds: literacy tests, poll taxes, grandfather clauses, and physical violence. True enforcement didn't arrive until the Voting Rights Act of 1965.</div>
+        <span class="amendment-tag tag-voting">Voting</span>
+      </div>
+    </div>
+
+    <!-- Deep Dive: 13th Loophole -->
+    <div class="spotlight-article fade-in">
+      <p class="byline">Deep Dive · The 13th Amendment</p>
+      <h3>The Loophole No One Talks About</h3>
+      <p>
+        Most people know the 13th Amendment ended slavery. Fewer know it contains an exception that has never been closed. The official text reads: <em>"Neither slavery nor involuntary servitude, except as a punishment for crime whereof the party shall have been duly convicted, shall exist within the United States."</em>
+      </p>
+      <div class="loophole-box">
+        <strong>⚠ The Exception Still in Effect</strong>
+        Those four words — "except as a punishment for crime" — allowed Southern states to immediately re-criminalize Black Americans through vagrancy laws, loitering charges, and debt collection statutes. Arrested Black men were leased to plantations, coal mines, and railroads. Historians call this the "neo-slavery" era. Today, incarcerated people in several states can be required to work for little or no pay.
+      </div>
+      <p>
+        Several states have passed ballot measures removing this exception from their own constitutions. A federal amendment to close it has been introduced in Congress but has not yet passed.
+      </p>
+    </div>
+
+    <!-- Deep Dive: 14th -->
+    <div class="spotlight-article fade-in">
+      <p class="byline">Deep Dive · The 14th Amendment</p>
+      <h3>The Most Powerful Tool in Constitutional Law</h3>
+      <p>
+        The 14th Amendment is not one idea — it is four major legal weapons wrapped in a single section. The Citizenship Clause overturned the Supreme Court's worst decision. The Equal Protection Clause became the legal backbone of the entire civil rights movement. The Due Process Clause made the Bill of Rights apply to state governments, not just the federal government.
+      </p>
+      <p>
+        Brown v. Board of Education (1954), Loving v. Virginia (1967), Obergefell v. Hodges (2015) — all rested on the 14th Amendment's Equal Protection Clause. Currently, debates around affirmative action, trans rights, and voting access all flow through this amendment.
+      </p>
+      <div class="loophole-box">
+        <strong>⚠ Today's Tension</strong>
+        The same clause used to protect marginalized groups is now regularly invoked to challenge policies designed to remedy historical discrimination. Who "equal protection" protects — and from what — is one of the most contested questions in American law.
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ════════════════════════════════════════
+       ERA 4 — PROGRESSIVE ERA
+  ════════════════════════════════════════ -->
+  <section class="era-section fade-in" id="progressive">
+    <div class="era-header reverse">
+      <div class="era-meta">
+        <span class="era-badge">Era Four</span>
+        <h2>The Progressive Era</h2>
+        <p class="era-years">// 1913–1920</p>
+        <p>
+          A wave of reform swept through America as industrialization created vast inequality and political corruption. These amendments created the income tax, took Senate elections out of the hands of state legislatures, briefly banned alcohol — and finally gave women the right to vote after 72 years of organized struggle.
+        </p>
+      </div>
+      <div class="era-img-wrap">
+        <img src="https://cwtqstdxiythhnedpqtp.supabase.co/storage/v1/object/public/amendments_to_the_constitution/progressive_era_1913-1920.png" alt="Progressive Era 1913–1920" loading="lazy" />
+        <div class="era-img-caption">PROGRESSIVE ERA — 1913–1920</div>
+      </div>
+    </div>
+
+    <div class="amendments-grid">
+      <div class="amendment-card">
+        <div class="amendment-number">16</div>
+        <div class="amendment-title">Federal Income Tax</div>
+        <div class="amendment-summary">Gave Congress the power to tax personal income directly. Before this, federal revenue came mainly from tariffs. Today this funds the entire federal government — defense, Social Security, healthcare, roads.</div>
+        <span class="amendment-tag tag-governance">Economics</span>
+      </div>
+      <div class="amendment-card">
+        <div class="amendment-number">17</div>
+        <div class="amendment-title">Direct Election of Senators</div>
+        <div class="amendment-summary">Originally, senators were chosen by state legislatures — a system prone to corruption and deadlock. This amendment gave the power directly to voters, a major step toward true democratic representation.</div>
+        <span class="amendment-tag tag-voting">Democracy</span>
+      </div>
+      <div class="amendment-card">
+        <div class="amendment-number">18</div>
+        <div class="amendment-title">Prohibition of Alcohol</div>
+        <div class="amendment-summary">The only amendment ever repealed. It banned the manufacture, sale, and transport of alcohol — and inadvertently created organized crime, speakeasies, and a black market economy. A cautionary tale about legislating morality.</div>
+        <span class="amendment-tag tag-governance">Repealed</span>
+      </div>
+      <div class="amendment-card spotlight">
+        <div class="amendment-number">19</div>
+        <div class="amendment-title">Women's Right to Vote</div>
+        <div class="amendment-summary">Ratified in 1920 after 72 years of organized suffrage activism. It did not, however, protect Black women from voter suppression — for them, the vote was not truly secured until the Voting Rights Act of 1965, 45 years later.</div>
+        <span class="amendment-tag tag-voting">Suffrage</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ════════════════════════════════════════
+       ERA 5 — MID-20TH CENTURY
+  ════════════════════════════════════════ -->
+  <section class="era-section fade-in" id="mid20th">
+    <div class="era-header">
+      <div class="era-meta">
+        <span class="era-badge">Era Five</span>
+        <h2>Mid-20th Century</h2>
+        <p class="era-years">// 1933–1971</p>
+        <p>
+          Depression, World War II, the Cold War, the civil rights movement, and Vietnam shaped this era of amendments. From presidential term limits and the end of Prohibition to abolishing poll taxes and lowering the voting age, these changes reflect a nation being tested and forced to live up to its ideals.
+        </p>
+      </div>
+      <div class="era-img-wrap">
+        <img src="https://cwtqstdxiythhnedpqtp.supabase.co/storage/v1/object/public/amendments_to_the_constitution/mid-20th_century_1933-1971.png" alt="Mid-20th Century Amendments" loading="lazy" />
+        <div class="era-img-caption">MID-20TH CENTURY AMENDMENTS — 1933–1971</div>
+      </div>
+    </div>
+
+    <div class="amendments-grid">
+      <div class="amendment-card">
+        <div class="amendment-number">20</div>
+        <div class="amendment-title">Lame-Duck Amendment</div>
+        <div class="amendment-summary">Moved the presidential inauguration from March to January 20th, shortening the period a defeated president holds power. Called the "Lame Duck" amendment — it reduces the window for a president with no political future to cause damage.</div>
+        <span class="amendment-tag tag-governance">Process</span>
+      </div>
+      <div class="amendment-card">
+        <div class="amendment-number">21</div>
+        <div class="amendment-title">Repeal of Prohibition</div>
+        <div class="amendment-summary">Reversed the 18th Amendment. The only time one amendment was used to cancel another. Alcohol was legal again — but the organized crime infrastructure built during Prohibition proved lasting.</div>
+        <span class="amendment-tag tag-governance">Repeal</span>
+      </div>
+      <div class="amendment-card">
+        <div class="amendment-number">22</div>
+        <div class="amendment-title">Presidential Term Limits</div>
+        <div class="amendment-summary">No president may serve more than two terms. Passed after FDR won four consecutive elections. It limits the concentration of executive power — a debate that resurfaces every time an outgoing president remains influential.</div>
+        <span class="amendment-tag tag-governance">Checks &amp; Balances</span>
+      </div>
+      <div class="amendment-card">
+        <div class="amendment-number">23</div>
+        <div class="amendment-title">D.C. Electoral Votes</div>
+        <div class="amendment-summary">Gave Washington D.C. presidential electors. However, D.C. residents still have no voting representation in Congress — a democracy gap affecting over 700,000 citizens who are taxed and can be sent to war.</div>
+        <span class="amendment-tag tag-voting">Representation</span>
+      </div>
+      <div class="amendment-card spotlight">
+        <div class="amendment-number">24</div>
+        <div class="amendment-title">Abolition of Poll Taxes</div>
+        <div class="amendment-summary">Banned charging citizens to vote in federal elections. Poll taxes had been a primary tool to disenfranchise poor Black voters across the South since Reconstruction. This amendment came nearly 100 years after the 15th.</div>
+        <span class="amendment-tag tag-voting">Voting Rights</span>
+      </div>
+      <div class="amendment-card">
+        <div class="amendment-number">25</div>
+        <div class="amendment-title">Presidential Succession</div>
+        <div class="amendment-summary">Establishes a clear order of succession if the President dies, resigns, or becomes incapacitated. It also created a process to temporarily transfer power — invoked most notably after the Kennedy assassination and Reagan shooting.</div>
+        <span class="amendment-tag tag-governance">Continuity</span>
+      </div>
+      <div class="amendment-card">
+        <div class="amendment-number">26</div>
+        <div class="amendment-title">Voting Age Lowered to 18</div>
+        <div class="amendment-summary">During Vietnam, Americans were outraged that 18-year-olds could be drafted and die in war but couldn't vote. This amendment corrected that contradiction. Ratified in 1971 — the fastest ratification in history.</div>
+        <span class="amendment-tag tag-voting">Youth Suffrage</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ════════════════════════════════════════
+       ERA 6 — MOST RECENT
+  ════════════════════════════════════════ -->
+  <section class="era-section fade-in" id="recent">
+    <div class="era-header reverse">
+      <div class="era-meta">
+        <span class="era-badge">Era Six</span>
+        <h2>The Most Recent Amendment</h2>
+        <p class="era-years">// 1992</p>
+        <p>
+          The 27th Amendment has one of the strangest histories in American law. It was originally proposed in 1789 — the same year as the Bill of Rights — but wasn't ratified for 203 years. A college student rediscovered it in the 1980s and started an unlikely campaign that ended with its ratification in 1992.
+        </p>
+      </div>
+      <div class="era-img-wrap">
+        <img src="https://cwtqstdxiythhnedpqtp.supabase.co/storage/v1/object/public/amendments_to_the_constitution/most_recent_1992.png" alt="Most Recent Amendment 1992" loading="lazy" />
+        <div class="era-img-caption">27TH AMENDMENT — RATIFIED MAY 7, 1992</div>
+      </div>
+    </div>
+
+    <div class="amendments-grid">
+      <div class="amendment-card">
+        <div class="amendment-number">27</div>
+        <div class="amendment-title">Congressional Pay</div>
+        <div class="amendment-summary">Any law changing congressional salaries cannot take effect until after the next election. This forces members of Congress to face voters before they benefit from any pay raise they voted for — a small but powerful accountability measure.</div>
+        <span class="amendment-tag tag-governance">Accountability</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       BEFORE & AFTER
+  ════════════════════════════════════════ -->
+  <section class="before-after-section fade-in" id="before-after">
+    <div class="section-title">Before &amp; After</div>
+    <p class="section-sub">The text, the then, the now — and the tension in between.</p>
+
+    <div class="ba-tabs">
+      <button class="ba-tab active" onclick="switchTab('2nd')">2nd Amendment</button>
+      <button class="ba-tab" onclick="switchTab('14th')">14th Amendment</button>
+      <button class="ba-tab" onclick="switchTab('13th')">13th Amendment</button>
+      <button class="ba-tab" onclick="switchTab('19th')">19th Amendment</button>
+    </div>
+
+    <div class="ba-panels">
+
+      <!-- 2nd Amendment -->
+      <div class="ba-panel active" id="panel-2nd">
+        <div class="ba-grid">
+          <div class="ba-side before-side">
+            <div class="ba-label">Then — What It Said &amp; Why</div>
+            <h3>The Right to Bear Arms</h3>
+            <div class="official-text">
+              "A well regulated Militia, being necessary to the security of a free State, the right of the people to keep and bear Arms, shall not be infringed."
+              <br><br><em>— Ratified December 15, 1791</em>
+            </div>
+            <p>
+              Written when the young United States had no standing army, this amendment was born from the fear of a tyrannical central government. Citizen militias were the defense of last resort. Gun ownership was also practical — settlers on a frontier depended on firearms for food and survival.
+            </p>
+          </div>
+          <div class="ba-side after-side">
+            <div class="ba-label">Now — Today's Reality</div>
+            <h3>An Amendment Under Pressure</h3>
+            <div class="today-box">
+              <strong>Today:</strong> The U.S. has more guns than people. Mass shootings have become a near-weekly occurrence. In 2022, the Supreme Court's <em>Bruen</em> decision expanded gun rights by requiring any firearm regulation to be rooted in the nation's historical tradition — making many modern safety laws harder to pass.
+            </div>
+            <p>
+              The debate isn't simply "guns vs. no guns." It's about how a right written for a specific historical context should apply in a world with semi-automatic weapons, school shootings, and domestic terrorism. Courts, legislatures, and communities are still negotiating this balance.
+            </p>
+            <ul>
+              <li>Background check loopholes remain at gun shows and private sales</li>
+              <li>Red flag laws allow temporary removal of firearms in crisis situations</li>
+              <li>Black Americans face disproportionate scrutiny while legally carrying firearms</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14th Amendment -->
+      <div class="ba-panel" id="panel-14th">
+        <div class="ba-grid">
+          <div class="ba-side before-side">
+            <div class="ba-label">Then — What It Said &amp; Why</div>
+            <h3>Citizenship &amp; Equal Protection</h3>
+            <div class="official-text">
+              "No State shall… deny to any person within its jurisdiction the equal protection of the laws."
+              <br><br><em>— Ratified July 9, 1868</em>
+            </div>
+            <p>
+              After the Civil War, Southern states enacted "Black Codes" — laws designed to restrict the freedom of 4 million newly freed Black Americans. The 14th Amendment was Congress's answer: every person, regardless of race, is entitled to equal treatment under the law.
+            </p>
+          </div>
+          <div class="ba-side after-side">
+            <div class="ba-label">Now — Today's Reality</div>
+            <h3>The Most Contested Clause in America</h3>
+            <div class="today-box">
+              <strong>Today:</strong> The Equal Protection Clause is invoked in nearly every major civil rights case. It has been used to desegregate schools, protect LGBTQ+ rights, and challenge discriminatory policies. It's also been used to strike down affirmative action programs designed to remedy centuries of discrimination.
+            </div>
+            <p>
+              The central tension: does equal protection mean treating everyone identically regardless of historical disadvantage — or does it require actively correcting systems that produce unequal outcomes? This question divides courts, communities, and the country.
+            </p>
+            <ul>
+              <li>Section 3 — the insurrection clause — is the subject of active legal debate</li>
+              <li>Birthright citizenship, guaranteed by the Citizenship Clause, faces political challenge</li>
+              <li>Trans rights, immigration, and policing are all active 14th Amendment battlegrounds</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13th Amendment -->
+      <div class="ba-panel" id="panel-13th">
+        <div class="ba-grid">
+          <div class="ba-side before-side">
+            <div class="ba-label">Then — What It Said &amp; Why</div>
+            <h3>The End of Slavery</h3>
+            <div class="official-text">
+              "Neither slavery nor involuntary servitude, except as a punishment for crime whereof the party shall have been duly convicted, shall exist within the United States…"
+              <br><br><em>— Ratified December 6, 1865</em>
+            </div>
+            <p>
+              The Emancipation Proclamation was a temporary wartime measure that only applied to Confederate states. The 13th Amendment was meant to be permanent and universal — a complete constitutional break with the institution of slavery. Congress passed it on January 31, 1865, just months before the war ended.
+            </p>
+          </div>
+          <div class="ba-side after-side">
+            <div class="ba-label">Now — Today's Reality</div>
+            <h3>An Exception That Never Closed</h3>
+            <div class="today-box">
+              <strong>Today:</strong> The "except as punishment for crime" clause has never been removed from the Constitution. Incarcerated people in many states can be required to work for cents per hour. The U.S. has the world's largest incarcerated population — over 2 million people. Black Americans are incarcerated at five times the rate of white Americans.
+            </div>
+            <p>
+              The 13th Amendment abolished slavery as an institution while creating a legal exception that has allowed slavery-like conditions to persist in America's prison system for 160 years. This is not theoretical — it is documented, ongoing, and contested.
+            </p>
+            <ul>
+              <li>Several states have removed the exception from their state constitutions</li>
+              <li>A federal amendment to close the loophole has been introduced multiple times</li>
+              <li>The documentary film <em>13th</em> (2016) brought national attention to this issue</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19th Amendment -->
+      <div class="ba-panel" id="panel-19th">
+        <div class="ba-grid">
+          <div class="ba-side before-side">
+            <div class="ba-label">Then — What It Said &amp; Why</div>
+            <h3>Women's Suffrage</h3>
+            <div class="official-text">
+              "The right of citizens of the United States to vote shall not be denied or abridged by the United States or by any State on account of sex."
+              <br><br><em>— Ratified August 18, 1920</em>
+            </div>
+            <p>
+              Women organized for the right to vote for 72 years before this amendment passed. The Seneca Falls Convention of 1848 lit the spark. Generations of suffragists marched, lobbied, were arrested, and went on hunger strikes. The 19th Amendment was the result of extraordinary, sustained collective action.
+            </p>
+          </div>
+          <div class="ba-side after-side">
+            <div class="ba-label">Now — Today's Reality</div>
+            <h3>Won on Paper — Delayed in Practice</h3>
+            <div class="today-box">
+              <strong>Today:</strong> Women vote at higher rates than men. Yet the amendment was formally about sex, not race — Black women remained disenfranchised by segregation and voter suppression laws until 1965. Native American women faced their own barriers well into the 20th century.
+            </div>
+            <p>
+              The 19th Amendment represents a landmark — and a reminder that legal rights and lived rights are not always the same thing. The movement that won it was also divided by race: some white suffragist leaders explicitly excluded or opposed Black women to gain Southern support.
+            </p>
+            <ul>
+              <li>Women still face structural barriers in political representation</li>
+              <li>The Equal Rights Amendment — guaranteeing sex equality — has still not been fully ratified</li>
+              <li>Voter ID laws and polling access disparities continue to affect women of color disproportionately</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       WHAT SHOULD COME NEXT
+  ════════════════════════════════════════ -->
+  <section class="equal-rights-section fade-in" id="equal-rights">
+    <div class="container">
+      <p class="kicker" style="color: var(--gold-light); font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; text-align:center; margin-bottom:0.8rem;">Looking Forward</p>
+      <div class="section-title">What Equal Rights for All Would Require</div>
+      <p class="section-sub">If the Constitution were written today — to guarantee genuine equality for every American — what might it say?</p>
+
+      <div class="proposed-amendments">
+
+        <div class="proposed-card">
+          <div class="proposed-num">Proposed</div>
+          <h3>Close the Prison Labor Exception</h3>
+          <p>Remove "except as a punishment for crime" from the 13th Amendment. No person's labor may be compelled without consent, regardless of conviction status.</p>
+          <p class="reason">Reason: The exception has been used to perpetuate slave-like conditions in the U.S. prison system for 160 years. True abolition of involuntary servitude must be unconditional.</p>
+        </div>
+
+        <div class="proposed-card">
+          <div class="proposed-num">Proposed</div>
+          <h3>An Explicit Right to Vote</h3>
+          <p>The Constitution should affirmatively guarantee every citizen the right to vote, rather than simply listing groups who cannot be excluded from voting.</p>
+          <p class="reason">Reason: The current framework creates loopholes. An affirmative right to vote would close them — making voter suppression, purges, and disenfranchisement unconstitutional on their face.</p>
+        </div>
+
+        <div class="proposed-card">
+          <div class="proposed-num">Proposed</div>
+          <h3>Equal Rights Amendment — Sex &amp; Gender</h3>
+          <p>Equality of rights under the law shall not be denied or abridged on account of sex, gender identity, or sexual orientation.</p>
+          <p class="reason">Reason: The original ERA passed Congress in 1972 but was never fully ratified. The Constitution still does not explicitly guarantee sex equality — leaving protections to courts whose compositions change.</p>
+        </div>
+
+        <div class="proposed-card">
+          <div class="proposed-num">Proposed</div>
+          <h3>A Right to Healthcare</h3>
+          <p>Every person in the United States has the right to necessary medical care, which shall not be conditioned on income, employment, or citizenship status.</p>
+          <p class="reason">Reason: The U.S. is the only wealthy democracy without a constitutional or legal guarantee of healthcare. Medical debt is the leading cause of personal bankruptcy.</p>
+        </div>
+
+        <div class="proposed-card">
+          <div class="proposed-num">Proposed</div>
+          <h3>Digital Privacy Rights</h3>
+          <p>The right of the people to be secure in their digital persons, communications, data, and devices shall not be violated without individualized judicial warrant.</p>
+          <p class="reason">Reason: The 4th Amendment was written for physical spaces. Surveillance capitalism, government data collection, and AI surveillance demand explicit constitutional protections for the digital age.</p>
+        </div>
+
+        <div class="proposed-card">
+          <div class="proposed-num">Proposed</div>
+          <h3>D.C. Statehood or Full Representation</h3>
+          <p>All citizens residing in the District of Columbia shall have equal representation in both chambers of Congress as residents of any State.</p>
+          <p class="reason">Reason: Over 700,000 people pay federal taxes, serve in the military, and obey federal law — without a single voting member of Congress. This is a democracy gap that constitutional language alone can close.</p>
+        </div>
+
+        <div class="proposed-card">
+          <div class="proposed-num">Proposed</div>
+          <h3>Economic Rights &amp; Living Wage</h3>
+          <p>No person who works full time shall earn wages insufficient to meet basic needs. Congress shall establish and enforce a living wage standard, indexed to inflation.</p>
+          <p class="reason">Reason: Political and civil rights mean little without economic dignity. Nearly every other developed democracy includes socioeconomic rights in its foundational law.</p>
+        </div>
+
+        <div class="proposed-card">
+          <div class="proposed-num">Proposed</div>
+          <h3>Environmental Rights</h3>
+          <p>Every person has the right to a clean and healthy environment, including clean air, clean water, and a stable climate. Government shall not act in ways that knowingly undermine this right.</p>
+          <p class="reason">Reason: Climate change disproportionately harms the most vulnerable communities. A constitutional environmental right would give citizens legal standing to hold polluters and governments accountable.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING PULL QUOTE -->
+  <section style="padding: 3rem 1.5rem; max-width: 860px; margin: 0 auto;" class="fade-in">
+    <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <div class="pull-quote">
+      A Constitution is only as strong as the people's willingness to understand it, challenge it, and demand that it live up to its highest purpose: the equal dignity of every human being under law.
+    </div>
+    <p style="text-align:center; font-size:0.92rem; color:#555; line-height:1.75; max-width:640px; margin:1.5rem auto 0;">
+      The amendments to the Constitution are not distant history. They are alive in courtrooms today. They are invoked in protests, argued in legislatures, and felt in everyday life — in your phone, your ballot, your body, and your neighborhood. Knowing what they actually say is the first step toward holding them to account.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <h4>We The People</h4>
+    <div class="footer-rule"></div>
+    <p>A civic education resource. All amendment text sourced from the National Archives and the U.S. Constitution. Historical analysis draws on peer-reviewed scholarship and primary sources.</p>
+    <p class="footer-mono">27 Amendments &nbsp;·&nbsp; 1791–1992 &nbsp;·&nbsp; One Living Document</p>
+  </footer>
+
+  <script>
+    // Tab switching
+    function switchTab(id) {
+      document.querySelectorAll('.ba-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.ba-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('panel-' + id).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
